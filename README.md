@@ -27,3 +27,12 @@ CREATE TABLE pizza_types (
     ingredients TEXT
 );
 ```
+```
+CREATE TABLE pizzas (
+    pizza_id TEXT PRIMARY KEY,
+    pizza_type_id TEXT,
+    size TEXT,
+    price DOUBLE,
+    FOREIGN KEY (pizza_type_id) REFERENCES pizza_types(pizza_type_id)
+);
+```
