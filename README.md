@@ -19,3 +19,11 @@ CREATE TABLE order_details (
     PRIMARY KEY (order_details_id)
 );
 ```
+```
+CREATE TABLE pizza_types (
+    pizza_type_id TEXT PRIMARY KEY,
+    name TEXT,
+    category TEXT,
+    ingredients TEXT
+);
+```
