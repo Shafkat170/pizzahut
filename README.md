@@ -36,3 +36,7 @@ CREATE TABLE pizzas (
     FOREIGN KEY (pizza_type_id) REFERENCES pizza_types(pizza_type_id)
 );
 ```
+# Retrieve the total number of orders placed.
+```
+select count(distinct order_id)as total_orders from orders;-- 21350
+
