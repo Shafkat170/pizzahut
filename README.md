@@ -74,5 +74,22 @@ LIMIT 1;
 |------|-------------|
 | L    | 18526       |
 
+# Identify the highest-priced pizza.
+```
+SELECT 
+    pi.name, p.price
+FROM
+    pizza_types pi
+        JOIN
+    pizzas p ON pi.pizza_type_id = p.pizza_type_id
+ORDER BY p.price DESC
+LIMIT 1;
+```
+| name            | price |
+|-----------------|-------|
+| The Greek Pizza | 35.95 |
+
+
+
 
 
