@@ -40,9 +40,10 @@ CREATE TABLE pizzas (
 ```
 select count(distinct order_id)as total_orders from orders;
 ```
- total_orders
--------------
- 21350
+| total_orders |
+|--------------|
+| 21350        |
+
 
  # Calculate the total revenue generated from pizza sales.
 ```
