@@ -58,4 +58,21 @@ FROM
 |---------------|
 | 81760.05      |
 
+  # Identify the most common pizza size ordered.
+```
+SELECT 
+    p.size, COUNT(o.order_details_id) AS order_count
+FROM
+    pizzas p
+        JOIN
+    order_details o ON p.pizza_id = o.pizza_id
+GROUP BY p.size
+ORDER BY order_count DESC
+LIMIT 1;
+```
+| size | order_count |
+|------|-------------|
+| L    | 18526       |
+
+
 
