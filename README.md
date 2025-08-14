@@ -88,6 +88,27 @@ LIMIT 1;
 | name            | price |
 |-----------------|-------|
 | The Greek Pizza | 35.95 |
+# List the top 5 most ordered pizza types along with their quantities.
+```
+SELECT 
+    pi.name, SUM(o.quantity) AS quantity
+FROM
+    pizza_types pi
+        JOIN
+    pizzas p ON pi.pizza_type_id = p.pizza_type_id
+        JOIN
+    order_details o ON o.pizza_id = p.pizza_id
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 5;
+```
+| name                        | quantity |
+|-----------------------------|----------|
+| The Classic Deluxe Pizza    | 2453     |
+| The Barbecue Chicken Pizza  | 2432     |
+| The Hawaiian Pizza          | 2422     |
+| The Pepperoni Pizza         | 2418     |
+| The Thai Chicken Pizza      | 2371     |
 
 
 
