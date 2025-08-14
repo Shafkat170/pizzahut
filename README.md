@@ -110,6 +110,51 @@ LIMIT 5;
 | The Pepperoni Pizza         | 2418     |
 | The Thai Chicken Pizza      | 2371     |
 
+# Join the necessary tables to find the total quantity of each pizza category ordered.
+```
+SELECT 
+    category, SUM(o.quantity) AS quantity
+FROM
+    pizza_types pi
+        JOIN
+    pizzas p ON pi.pizza_type_id = p.pizza_type_id
+        JOIN
+    order_details o ON o.pizza_id = p.pizza_id
+GROUP BY 1
+ORDER BY 2 DESC;
+```
+| category | quantity |
+|----------|----------|
+| Classic  | 14888    |
+| Supreme  | 11987    |
+| Veggie   | 11649    |
+| Chicken  | 11050    |
+# Determine the distribution of orders by hour of the day.
+```
+SELECT 
+    HOUR(order_time) AS hour, COUNT(order_id) AS order_count
+FROM
+    orders
+GROUP BY 1
+ORDER BY 2 DESC;
+-- Join relevant tables to find the category-wise distribution of pizzas.
+select category,count(name) from pizza_types group by 1;
+```
+| hour | order_count |
+|------|-------------|
+| 12   | 2520        |
+| 13   | 2455        |
+| 18   | 2399        |
+| 17   | 2336        |
+| 19   | 2009        |
+| 16   | 1920        |
+| 20   | 1642        |
+| 14   | 1472        |
+| 15   | 1468        |
+| 11   | 1231        |
+| ...  | ...         |
+
+
 
 
 
