@@ -181,6 +181,27 @@ FROM
 |-----------------------------|
 | 138                         |
 
+# Determine the top 3 most ordered pizza types based on revenue.
+```
+SELECT 
+    pt.name, ROUND(SUM(o.quantity * p.price), 0) AS revenue
+FROM
+    pizza_types pt
+        JOIN
+    pizzas p ON pt.pizza_type_id = p.pizza_type_id
+        JOIN
+    order_details o ON o.pizza_id = p.pizza_id
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 3;
+```
+| name                         | revenue |
+|------------------------------|---------|
+| The Thai Chicken Pizza       | 43434   |
+| The Barbecue Chicken Pizza   | 42768   |
+| The California Chicken Pizza | 41410   |
+
+
 
 
 
