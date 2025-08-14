@@ -154,6 +154,34 @@ select category,count(name) from pizza_types group by 1;
 | 11   | 1231        |
 | ...  | ...         |
 
+# Join relevant tables to find the category-wise distribution of pizzas.
+```
+select category,count(name) from pizza_types group by 1;
+```
+| category | count(name) |
+|----------|-------------|
+| Chicken  | 6           |
+| Classic  | 8           |
+| Supreme  | 9           |
+| Veggie   | 7           |
+
+# Group the orders by date and calculate the average number of pizzas ordered per day.
+```
+SELECT 
+    ROUND(AVG(quantity), 0) AS average_pizza_orderd_perday
+FROM
+    (SELECT 
+        o.order_date, SUM(od.quantity) AS quantity
+    FROM
+        orders o
+    JOIN order_details od ON o.order_id = od.order_id
+    GROUP BY 1) AS order_quantity;
+```
+| average_pizza_orderd_perday |
+|-----------------------------|
+| 138                         |
+
+
 
 
 
