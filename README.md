@@ -201,6 +201,27 @@ LIMIT 3;
 | The Barbecue Chicken Pizza   | 42768   |
 | The California Chicken Pizza | 41410   |
 
+# Calculate the percentage contribution of each pizza type to total revenue. 
+```
+WITH category_wise_revenue AS
+(SELECT 
+    pt.category, SUM(o.quantity * p.price) AS revenue FROM
+    pizza_types pt JOIN pizzas p ON pt.pizza_type_id = p.pizza_type_id
+	JOIN  order_details o ON o.pizza_id = p.pizza_id GROUP BY 1),
+total_revenue as
+(select round(sum(revenue),2)as total_revenue from category_wise_revenue)
+SELECT cr.category,ROUND((cr.revenue / tr.total_revenue) * 100, 2) AS percentage_contribution 
+FROM category_wise_revenue cr JOIN total_revenue tr ORDER BY percentage_contribution desc;
+```
+| category | percentage_contribution |
+|----------|--------------------------|
+| Classic  | 26.91                    |
+| Supreme  | 25.46                    |
+| Chicken  | 23.96                    |
+| Veggie   | 23.68                    |
+
+
+
 
 
 
