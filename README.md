@@ -220,6 +220,34 @@ FROM category_wise_revenue cr JOIN total_revenue tr ORDER BY percentage_contribu
 | Chicken  | 23.96                    |
 | Veggie   | 23.68                    |
 
+# Determine the top 3 most ordered pizza types based on revenue for each pizza category.
+```
+-- Determine the top 3 most ordered pizza types based on revenue for each pizza category.
+select name,revenue from
+(select category,name, revenue, rank() over(partition by category order by revenue desc) as rank_number from 
+(SELECT 
+    pt.category,pt.name, round(SUM(o.quantity * p.price),0) AS revenue
+FROM
+    pizza_types pt
+        JOIN
+    pizzas p ON pt.pizza_type_id = p.pizza_type_id
+        JOIN
+    order_details o ON o.pizza_id = p.pizza_id
+GROUP BY 1,2) as sales) as sales_2 where rank_number<=3;
+```
+| name                        | revenue |
+|-----------------------------|---------|
+| The Thai Chicken Pizza      | 43434   |
+| The Barbecue Chicken Pizza  | 42768   |
+| The California Chicken Pizza| 41410   |
+| The Classic Deluxe Pizza    | 38180   |
+| The Hawaiian Pizza          | 32273   |
+| The Pepperoni Pizza         | 30162   |
+| The Spicy Italian Pizza     | 34831   |
+| The Italian Supreme Pizza   | 33477   |
+| ...                         | ...     |
+
+
 
 
 
