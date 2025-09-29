@@ -29,13 +29,6 @@ CREATE TABLE pizzas (
     
 );
 
-
-
-
-
-
-
-
 -- Retrieve the total number of orders placed.
 
 select count(distinct order_id)as total_orders from orders;-- 21350
