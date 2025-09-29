@@ -30,11 +30,13 @@ CREATE TABLE pizza_types (
 ```
 ```
 CREATE TABLE pizzas (
-    pizza_id TEXT PRIMARY KEY,
-    pizza_type_id TEXT,
-    size TEXT,
+    pizza_id VARCHAR(10) PRIMARY KEY,
+    pizza_type_id VARCHAR(10),
+    size VARCHAR(20),
     price DOUBLE,
     FOREIGN KEY (pizza_type_id) REFERENCES pizza_types(pizza_type_id)
+);
+
 );
 ```
 # Retrieve the total number of orders placed.
