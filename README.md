@@ -21,11 +21,12 @@ CREATE TABLE order_details (
 ```
 ```
 CREATE TABLE pizza_types (
-    pizza_type_id TEXT PRIMARY KEY,
-    name TEXT,
-    category TEXT,
+    pizza_type_id VARCHAR(10) PRIMARY KEY,
+    name VARCHAR(100),
+    category VARCHAR(50),
     ingredients TEXT
 );
+
 ```
 ```
 CREATE TABLE pizzas (
