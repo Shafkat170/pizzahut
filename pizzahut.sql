@@ -14,6 +14,15 @@ CREATE TABLE order_details (
     quantity INT NOT NULL,
     PRIMARY KEY (order_details_id)
 );
+CREATE TABLE pizza_types (
+    pizza_type_id TEXT PRIMARY KEY,
+    name TEXT,
+    category TEXT,
+    ingredients TEXT
+);
+
+
+
 
 
 -- Retrieve the total number of orders placed.
