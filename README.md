@@ -40,7 +40,7 @@ CREATE TABLE pizzas (
 );
 
 
-);
+
 ```
 # Retrieve the total number of orders placed.
 ```
